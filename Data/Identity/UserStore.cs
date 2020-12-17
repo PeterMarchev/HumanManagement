@@ -1,5 +1,4 @@
-﻿using InternHCM.Data.Identity.Entities;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using NHibernate.Linq;
 using NHibernate;
 using System;

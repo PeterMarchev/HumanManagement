@@ -1,16 +1,17 @@
 ﻿using System;
 
-namespace Data
+
+namespace Services
 {
-    public partial class Salary
+    public partial class SalarySM
     {
         public virtual Guid Id { get; set; }
         public virtual decimal Amount { get; set; }
         public virtual DateTime EffectiveDate { get; set; }
         public virtual Guid PeriodicityId { get; set; }
         public virtual Guid EmployeeId { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual Periodicity Periodicity { get; set; }
+        public virtual EmployeeSM Employee { get; set; }
+        public virtual PeriodicitySM Periodicity { get; set; }
 
     }
 }

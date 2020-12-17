@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data
+namespace Services
 {
-    public partial class Periodicity
+    public partial class PeriodicitySM
     {
         public virtual Guid Id { get; set; }
         public virtual string Type { get; set; }
         public virtual DateTime SetOn { get; set; }
-        public virtual IList<Salary> Salaries { get; set; }
+        public virtual IList<SalarySM> Salaries { get; set; }
 
     }
 }

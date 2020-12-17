@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace Data
+namespace Services
 {
-    public partial class Attendance
+    public partial class AttendanceSM
     {
         public virtual Guid Id { get; set; }
         public virtual TimeSpan ClockIn { get; set; }
         public virtual TimeSpan? ClockOut { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual Guid EmployeeId { get; set; }
-        public virtual Employee Employee { get; set; }
-    }           
+        public virtual EmployeeSM Employee { get; set; }
+    }
 }

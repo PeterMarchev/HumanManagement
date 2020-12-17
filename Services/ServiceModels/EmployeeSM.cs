@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data
+namespace Services
 {
-    public partial class Employee
+    public partial class EmployeeSM
     {
         public virtual Guid Id { get; set; }
         public virtual string FirstName { get; set; }
@@ -18,12 +18,12 @@ namespace Data
         public virtual Guid JobId { get; set; }
         public virtual Guid? ManagerId { get; set; }
         public virtual Guid DepartmentId { get; set; }
-        public virtual Job Job { get; set; }
-        public virtual Department Department { get; set; }
-        public virtual ICollection<EmergencyContacts> EmergencyContacts { get; set; }
-        public virtual Employee Manager { get; set; }
-        public virtual Salary Salary { get; set; }
-        public virtual ICollection<DepartmentManager> DepartmentManagers { get; set; }
+        public virtual JobSM Job { get; set; }
+        public virtual DepartmentSM Department { get; set; }
+        public virtual ICollection<EmergencyContactsSM> EmergencyContacts { get; set; }
+        public virtual EmployeeSM Manager { get; set; }
+        public virtual SalarySM Salary { get; set; }
+        public virtual ICollection<DepartmentManagerSM> DepartmentManagers { get; set; }
 
     }
 }

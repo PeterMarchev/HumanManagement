@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data
+namespace Services
 {
-    public partial class Country
+    public partial class CountrySM
     {
         public virtual Guid Id { get; set; }
         public virtual string Name { get; set; }
         public virtual string Currency { get; set; }
-        public virtual IList<Location> Locations { get; set; }
+        public virtual IList<LocationSM> Locations { get; set; }
     }
 }

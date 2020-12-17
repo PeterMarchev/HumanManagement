@@ -1,14 +1,11 @@
+using AutoMapper;
 using HumanManagement.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Services.Profiles;
 
 namespace HumanManagement
 {
@@ -27,6 +24,22 @@ namespace HumanManagement
             services.AddControllersWithViews();
             services.AddNHibernateSessionFactory(Configuration.GetConnectionString("DbConnection"));
             services.AddNHibernateIdentity();
+
+            services.AddAutoMapper(/*typeof(EmployeeProfile), */typeof(EmployeeSMProfile),
+                                  /*typeof(AttendanceProfile),*/ typeof(AttendanceSMProfile),
+                                  /*typeof(CompanyProfile),*/ typeof(CompanySMProfile),
+                                  /*typeof(CountryProfile),*/ typeof(CountrySMProfile),
+                                  /*typeof(DepartmentManagerProfile),*/ typeof(DepartmentManagerSMProfile),
+                                  /*typeof(DepartmentProfile),*/ typeof(DepartmentSMProfile),
+                                  /*typeof(EmergencyContactsProfile),*/ typeof(EmergencyContactsSMProfile),
+                                  /*typeof(JobProfile),*/ typeof(JobSMProfile),
+                                  /*typeof(LocationProfile), */typeof(LocationSMProfile),
+                                  /*typeof(SalaryHistoryProfile),*/ typeof(SalaryHistorySMProfile),
+                                  /*typeof(SalaryProfile),*/ typeof(SalarySMProfile),
+                                  /*typeof(ScheduleProfile),*/ typeof(ScheduleSMProfile),
+                                  typeof(UserSMProfile), typeof(UserSMProfile),
+                                  //typeof(UserProfile), typeof(RoleProfile),
+                                  /*typeof(PeriodicityProfile),*/ typeof(PeriodicitySMProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

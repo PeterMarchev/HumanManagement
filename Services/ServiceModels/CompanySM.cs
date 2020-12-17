@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data
+namespace Services
 {
-    public partial class Company
+    public partial class CompanySM
     {
         public virtual Guid Id { get; set; }
         public virtual string CIN { get; set; }
         public virtual string Name { get; set; }
-        public virtual IList<Department> Departments { get; set; }
+        public virtual IList<DepartmentSM> Departments { get; set; }
     }
 }
