@@ -15,12 +15,14 @@ namespace Data.Mappings
             References(x => x.Employee)
                 .Column("employee_id")
                 .Not.Nullable()
-                .Fetch.Join();
+                .Fetch.Join()
+                .ReadOnly();
 
             References(x => x.Department)
                 .Column("department_id")
                 .Not.Nullable()
-                .Fetch.Join();
+                .Fetch.Join()
+                .ReadOnly();
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Data.Patterns
+namespace HumanManagement.Data.Patterns
 {
     public class UnitOfWork : IUnitOfWork
     {

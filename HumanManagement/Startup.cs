@@ -1,7 +1,9 @@
 using AutoMapper;
+using HumanManagement.Data.Patterns;
 using HumanManagement.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,7 +23,6 @@ namespace HumanManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
             services.AddNHibernateSessionFactory(Configuration.GetConnectionString("DbConnection"));
             services.AddNHibernateIdentity();
 
@@ -37,9 +38,23 @@ namespace HumanManagement
                                   /*typeof(SalaryHistoryProfile),*/ typeof(SalaryHistorySMProfile),
                                   /*typeof(SalaryProfile),*/ typeof(SalarySMProfile),
                                   /*typeof(ScheduleProfile),*/ typeof(ScheduleSMProfile),
-                                  typeof(UserSMProfile), typeof(UserSMProfile),
+                                  typeof(UserSMProfile), typeof(RoleSMProfile),
                                   //typeof(UserProfile), typeof(RoleProfile),
                                   /*typeof(PeriodicityProfile),*/ typeof(PeriodicitySMProfile));
+
+
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
+
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>))
+                    .AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+            services.AddMvc(options =>
+            {
+                // This pushes users to login if not authenticated
+                options.Filters.Add(new AuthorizeFilter());
+            });
+            services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,8 +71,6 @@ namespace HumanManagement
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

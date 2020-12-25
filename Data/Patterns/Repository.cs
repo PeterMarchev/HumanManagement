@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using NHibernate.Linq;
 
 
-namespace Data.Patterns
+namespace HumanManagement.Data.Patterns
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using HumanManagement.Data.Identity.Entities;
+using Microsoft.AspNetCore.Identity;
 using NHibernate;
 using NHibernate.Linq;
 using System;
@@ -8,7 +9,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace InternHCM.Data.Identity
+namespace HumanManagement.Data.Identity
 {
     public class RoleStore<TRole>
         : RoleStoreBase<TRole, Guid, WebUserRole, WebRoleClaim> where TRole : WebRole

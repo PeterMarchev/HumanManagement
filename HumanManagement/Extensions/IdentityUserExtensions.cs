@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using HumanManagement.Data.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using NHibernate.AspNetCore.Identity;
 
 namespace HumanManagement.Extensions
 {

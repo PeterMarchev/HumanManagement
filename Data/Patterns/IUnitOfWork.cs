@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Data.Patterns
+namespace HumanManagement.Data.Patterns
 {
     public interface IUnitOfWork : IDisposable
     {
