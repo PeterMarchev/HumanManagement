@@ -6,15 +6,15 @@ namespace Data.Mappings
     {
         public EmergencyContactsMapping()
         {
-            Table("Emergency_contacts");
+            Table("Emergency_Contacts");
 
             Id(x => x.Id)
                 .Column("id")
                 .GeneratedBy.GuidComb();
 
             Map(x => x.EmployeeId)
-              .Column("employee_id")
-              .Not.Nullable();
+                .Column("employee_id")
+                .Not.Nullable();
 
             Map(x => x.FirstName)
                 .Column("first_name")

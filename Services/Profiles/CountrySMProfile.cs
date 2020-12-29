@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Data;
+using Services.ServiceModels;
 
 namespace Services.Profiles
 {
@@ -7,7 +8,7 @@ namespace Services.Profiles
     {
         public CountrySMProfile()
         {
-            CreateMap<CountrySM, Country>().ReverseMap();
+            CreateMap<Country, CountrySM>().ReverseMap();
         }
     }
 }

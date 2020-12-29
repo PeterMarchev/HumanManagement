@@ -9,12 +9,12 @@ namespace Data.Mappings
             Table("Attendance");
 
             Id(x => x.Id)
-            .Column("id")
-            .GeneratedBy.GuidComb();
+                .Column("id")
+                .GeneratedBy.GuidComb();
 
             Map(x => x.Date)
-               .Column("date")
-               .Not.Nullable();
+                .Column("date")
+                .Not.Nullable();
 
             Map(x => x.ClockIn)
                 .Column("clock_in")
@@ -26,14 +26,15 @@ namespace Data.Mappings
                 .CustomType("TimeAsTimeSpan")
                 .Nullable();
 
+            Map(x => x.EmployeeId)
+                .Column("employee_id")
+                .Not.Nullable();
+
             References(x => x.Employee)
                 .Column("employee_id")
                 .Not.Nullable()
                 .ReadOnly();
-
-            Map(x => x.EmployeeId)
-                .Column("employee_id")
-                .Not.Nullable();
         }
     }
 }
+    

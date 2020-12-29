@@ -12,6 +12,10 @@ namespace Data.Mappings
                 .Column("id")
                 .GeneratedBy.GuidComb();
 
+            Map(x => x.HRid)
+                .Column("hr_id")
+                .Nullable();
+
             Map(x => x.FirstName)
                 .Column("first_name")
                 .Not.Nullable();
@@ -29,6 +33,10 @@ namespace Data.Mappings
                 .Column("gender")
                 .Nullable();
 
+            Map(x => x.Nationality)
+                .Column("nationality")
+                .Nullable();
+
             Map(x => x.PhoneNumber)
                 .Column("phone_number")
                 .Nullable()
@@ -43,47 +51,44 @@ namespace Data.Mappings
                 .Nullable();
 
             Map(x => x.TerminationDate)
-                .Column("termination_date")
-                .Nullable();
-
-            Map(x => x.Nationality)
-                .Column("nationality")
-                .Nullable();
+               .Column("termination_date")
+               .Nullable();
 
             References(x => x.Job)
-                .Column("job_id")
-                .Nullable()
-                .ReadOnly()
-                .Fetch.Join();
-
-            Map(x => x.JobId)
-                .Column("job_id")
-                .Nullable();
+               .Column("job_id")
+               .Nullable()
+               .ReadOnly()
+               .Fetch.Join();
 
             References(x => x.Department)
-                .Column("department_id")
-                .Nullable()
-                .ReadOnly()
-                .Fetch.Join();
-
-            Map(x => x.DepartmentId)
-                .Column("department_id")
-                .Nullable();
-
-            References(x => x.Manager)
-                .Column("manager_id")
-                .Nullable()
-                .ReadOnly()
-                .Fetch.Join();
-
-            Map(x => x.ManagerId)
-                .Column("manager_id")
-                .Nullable();
+               .Column("department_id")
+               .Nullable()
+               .ReadOnly()
+               .Fetch.Join();
 
             HasMany(x => x.EmergencyContacts);
-
             HasOne(x => x.Salary)
                 .PropertyRef(x => x.Employee);
+
+
+
+            References(x => x.Manager)
+               .Column("manager_id")
+               .Nullable()
+               .ReadOnly()
+               .Fetch.Join();
+
+            Map(x => x.JobId)
+               .Column("job_id")
+               .Nullable();
+
+            Map(x => x.DepartmentId)
+               .Column("department_id")
+               .Nullable();
+
+            Map(x => x.ManagerId)
+               .Column("manager_id")
+               .Nullable();
         }
     }
 }

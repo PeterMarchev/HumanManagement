@@ -9,7 +9,6 @@ namespace Data.Mappings
             Table("Country");
 
             Id(x => x.Id)
-                .Column("id")
                 .GeneratedBy.GuidComb();
 
             Map(x => x.Name)
@@ -21,10 +20,9 @@ namespace Data.Mappings
                 .Not.Nullable();
 
             HasMany(x => x.Locations)
-                .KeyColumn("company_id")
+                .KeyColumn("country_id")
                 .Inverse()
                 .Fetch.Join();
-
         }
     }
 }

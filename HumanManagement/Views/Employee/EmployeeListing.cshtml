@@ -1,0 +1,67 @@
+﻿@model List<HumanManagement.Models.ViewModels.EmployeeVM>
+
+    <h1 class="d-flex justify-content-center">Employees</h1>
+
+
+    <table id="employeesTable" class="table table-condensed">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().FullName)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Email)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Nationality)</th>
+                @*<th>@Html.DisplayNameFor(model => model.FirstOrDefault().ManagerFN)</th>*@
+                <th>@Html.DisplayNameFor(model => model.FirstOrDefault().HireDate)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr class="userRow">
+                    <td>@Html.DisplayFor(employeeItem => employee.FullName)</td>
+                    <td>@Html.DisplayFor(employeeItem => employee.Email)</td>
+                    <td>@Html.DisplayFor(employeeItem => employee.PhoneNumber)</td>
+                    <td>@Html.DisplayFor(employeeItem => employee.Nationality)</td>
+                    @*<td>@Html.DisplayFor(employeeItem => employee.ManagerFN)</td>*@
+                    <td>@employee.HireDate.ToShortDateString()</td>
+
+
+                    @*<td>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               Action
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a asp-action="EmployeeEdit" asp-controller="Employee" asp-route-id="@employee.Id" class=" dropdown-item btn-sm btn-light btn-outline-dark">Update</a>
+                                <a asp-action="EmployeeDetails" asp-controller="Employee" asp-route-id="@employee.Id" class="dropdown-item btn btn-sm btn-light btn-outline-dark">Details</a>
+                                @if (employee.Salary == null)
+                                {
+                                    <a asp-action="CreateSalary" asp-controller="Salary" asp-route-id="@employee.Id" class="dropdown-item btn btn-sm btn-light btn-outline-dark">Add salary</a>
+                                }
+                                else
+                                {
+                                    <a asp-action="SalaryUpdate" asp-controller="Salary" asp-route-empid="@employee.Id" class="dropdown-item btn btn-sm btn-light btn-outline-dark">Update salary</a>
+                                }
+                            </div>
+                        </div>
+                    </td>*@
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    @section Scripts{
+        <script>
+            $(document).ready(function () {
+                $('#employeesTable').DataTable({
+                    searching: true
+                }
+                );
+            });
+
+        </script>
+    }

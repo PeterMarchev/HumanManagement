@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Services
+namespace Services.ServiceModels
 {
     public partial class PeriodicitySM
     {

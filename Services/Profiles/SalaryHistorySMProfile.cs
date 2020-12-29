@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Data;
+using Services.ServiceModels;
 
 namespace Services.Profiles
 {

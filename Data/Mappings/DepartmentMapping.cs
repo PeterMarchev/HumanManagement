@@ -7,7 +7,6 @@ namespace Data.Mappings
         public DepartmentMapping()
         {
             Table("Department");
-
             Id(x => x.Id)
                 .Column("id")
                 .GeneratedBy.GuidComb();

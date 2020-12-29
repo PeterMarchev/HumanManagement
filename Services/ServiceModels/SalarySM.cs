@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Services.ServiceModels;
+using System;
 
 
-namespace Services
+namespace Services.ServiceModels
 {
     public partial class SalarySM
     {

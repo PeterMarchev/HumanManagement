@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Services
+namespace Services.ServiceModels
 {
     public partial class SalaryHistorySM
     {
