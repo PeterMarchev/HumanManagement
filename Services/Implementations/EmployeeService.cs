@@ -8,6 +8,7 @@ using Services.ServiceModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Services.Implementations
 {
@@ -29,6 +30,47 @@ namespace Services.Implementations
             var employees = _uow.GetRepository<Employee>().GetAll();
             var mapping = _mapper.Map<List<Employee>, List<EmployeeSM>>(employees);
             return mapping;
+        }
+
+        public async Task<EmployeeSM> GetEmployeeByIdAsync(object id)
+        {
+            var employee = await _uow.GetRepository<Employee>().GetByIdAsync(id);
+            var mapping = _mapper.Map<Employee, EmployeeSM>(employee);
+            return mapping;
+        }
+
+        public async Task AddEmployeeAsync(EmployeeSM empNew)
+        {
+            try
+            {
+                _uow.BeginTransaction();
+
+                var emp = _mapper.Map<Employee>(empNew);
+                await _uow.GetRepository<Employee>().AddItemAsync(emp);
+
+                _uow.Commit();
+            }
+            catch
+            {
+                await _uow.RollbackAsync();
+            }
+        }
+
+        public async Task UpdateEmployeeAsync(EmployeeSM employee)
+        {
+            try
+            {
+                _uow.BeginTransaction();
+
+                var empUpdate = _mapper.Map<Employee>(employee);
+                await _uow.GetRepository<Employee>().UpdateAsync(empUpdate);
+
+                _uow.Commit();
+            }
+            catch (Exception)
+            {
+                _uow.Rollback();
+            }
         }
     }
 }
